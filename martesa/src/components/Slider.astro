@@ -1,0 +1,84 @@
+---
+import sodalita from "../../public/soda.webp";
+
+const imagenes = [
+  {
+    nombrePulsera: "Sodalita",
+    precio: "1000",
+    img: sodalita.src,
+  },
+  // Puedes agregar más imágenes aquí
+];
+---
+
+<section class="slider-container">
+  <button class="prev">&lt;</button>
+  <div class="slider">
+    {imagenes.map((imagen, index) => (
+      <div class="slide" key={index}>
+        <h6>{imagen.nombrePulsera}</h6>
+        <span>{imagen.precio}</span>
+        <img src={imagen.img} alt={imagen.nombrePulsera} />
+      </div>
+    ))}
+  </div>
+  <button class="next">&gt;</button>
+</section>
+
+<style lang="scss">
+  .slider-container {
+    position: relative;
+    width: 70%;
+    margin: auto;
+    overflow: hidden;
+  }
+
+  .slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .prev {
+    left: 10px;
+  }
+
+  .next {
+    right: 10px;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    const slider = document.querySelector('.slider');
+    
+    document.querySelector('.next').addEventListener('click', () => {
+      slideIndex = (slideIndex + 1) % totalSlides;
+      slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+    });
+
+    document.querySelector('.prev').addEventListener('click', () => {
+      slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
+      slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+    });
+  });
+</script>
