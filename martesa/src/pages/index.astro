@@ -43,17 +43,33 @@ const btns = [
   <main>
     <h1>Lista de precios - julio 2024</h1>
 
-    {btns.map((btn) => (
-      <>
-        <p class="btn" id={`btn-${btn.id}`}>
-          <img src={Destellos.src} alt="Destellos" />
-          {btn.nombre}
-        </p>
-        <div class="slider-container" id={`slider-${btn.id}`} style="display: none;">
-          <Slider imagenes={imagenesPorGrupo[btn.id]} />
-        </div>
-      </>
-    ))}
+    {
+      btns.map((btn) => (
+        <>
+          <p class="btn" id={`btn-${btn.id}`}>
+            <img src={Destellos.src} alt="Destellos" />
+            {btn.nombre}
+          </p>
+          <div
+            class="slider-container"
+            id={`slider-${btn.id}`}
+            style="display: none;"
+          >
+            <Slider imagenes={imagenesPorGrupo[btn.id]} />
+          </div>
+        </>
+      ))
+    }
+    <a
+      class="btn__pedido"
+      href="https://api.whatsapp.com/send?phone=5492346539622&text=Hola%2C%20quisiera%20hacer%20mi%20pedido%20de%20%E2%9C%A8mar.tesanias%E2%9C%A8"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img class="des" src={Destellos.src} alt="Destellos" />
+
+      Quisiera hacer mi pedido
+    </a>
   </main>
 </Layout>
 
@@ -104,6 +120,24 @@ const btns = [
     .slider-container {
       background-color: mar(2);
       width: 100%;
+    }
+  }
+  a {
+    margin-top: 20px;
+    text-decoration: none;
+    color: mar(5);
+    background-color: mar(1);
+    padding: 7px 5px;
+    border-radius: 8px;
+    font-weight: bold;
+    position: relative;
+
+    .des{
+position: absolute;
+width: 30px;
+height: 30px;
+top: -30%;
+left: -7%;
     }
   }
 </style>
