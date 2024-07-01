@@ -1,36 +1,84 @@
 ---
-import sodalita from "../../public/soda.webp";
-
-const imagenes = [
-  {
-    nombrePulsera: "Sodalita",
-    precio: "1000",
-    img: sodalita.src,
-  },
-  // Puedes agregar más imágenes aquí
-];
+const { imagenes } = Astro.props;
+import Flecha from "../../public/Flecha.svg";
 ---
 
-<section class="slider-container">
-  <button class="prev">&lt;</button>
+<div class="slider-wrapper">
   <div class="slider">
-    {imagenes.map((imagen, index) => (
-      <div class="slide" key={index}>
-        <h6>{imagen.nombrePulsera}</h6>
-        <span>{imagen.precio}</span>
-        <img src={imagen.img} alt={imagen.nombrePulsera} />
-      </div>
-    ))}
+    {
+      imagenes.map((imagen, index) => (
+        <div class="slide">
+          <article class="textos__slider">
+            <h6>{imagen.nombrePulsera}</h6>
+            <span>$ {imagen.precio}</span>
+          </article>
+          <img src={imagen.img} alt={imagen.nombrePulsera} />
+        </div>
+      ))
+    }
   </div>
-  <button class="next">&gt;</button>
-</section>
+  <article class="prev"
+    ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="icon icon-tabler icon-tabler-circle-arrow-left"
+      width="44"
+      height="44"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="#cd679f"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M12 21a9 9 0 1 0 0 -18a9 9 0 0 0 0 18"></path>
+      <path d="M8 12l4 4"></path>
+      <path d="M8 12h8"></path>
+      <path d="M12 8l-4 4"></path>
+    </svg></article
+  >
+  <article class="next"
+    ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="icon icon-tabler icon-tabler-circle-arrow-right"
+      width="44"
+      height="44"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="#cd679f"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0 -18"></path>
+      <path d="M16 12l-4 -4"></path>
+      <path d="M16 12h-8"></path>
+      <path d="M12 16l4 -4"></path>
+    </svg></article
+  >
+</div>
 
 <style lang="scss">
-  .slider-container {
+  $mar: (
+    1: #f8ebf3,
+    2: #f3d7e9,
+    3: #dc8aba,
+    4: #cd679f,
+    5: #9f3768,
+  );
+
+  @function mar($shade) {
+    @return map-get($mar, $shade);
+  }
+
+  .slider-wrapper {
     position: relative;
-    width: 70%;
-    margin: auto;
+    width: 100%;
     overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: mar(1);
   }
 
   .slider {
@@ -42,17 +90,61 @@ const imagenes = [
     min-width: 100%;
     box-sizing: border-box;
     text-align: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    overflow: hidden;
+
+    .textos__slider {
+      position: absolute;
+      width: 50%;
+      text-align: center;
+      top: 78%;
+      background-color: mar(4);
+      color: mar(1);
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      h6 {
+        font-size: 20px;
+        margin: 0;
+      }
+      span {
+        font-size: 16px;
+      }
+    }
+
+    img {
+      width: 80%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+    }
   }
 
-  .prev, .next {
+  .prev,
+  .next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
     border: none;
     padding: 10px;
     cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+    svg {
+      width: 55px;
+      height: 55px;
+    }
   }
 
   .prev {
@@ -62,21 +154,26 @@ const imagenes = [
   .next {
     right: 10px;
   }
+
+  .prev:hover,
+  .next:hover {
+    background-color: #9f376823;
+  }
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     let slideIndex = 0;
-    const slides = document.querySelectorAll('.slide');
+    const slider = document.querySelector(".slider");
+    const slides = slider.querySelectorAll(".slide");
     const totalSlides = slides.length;
-    const slider = document.querySelector('.slider');
-    
-    document.querySelector('.next').addEventListener('click', () => {
+
+    document.querySelector(".next").addEventListener("click", () => {
       slideIndex = (slideIndex + 1) % totalSlides;
       slider.style.transform = `translateX(-${slideIndex * 100}%)`;
     });
 
-    document.querySelector('.prev').addEventListener('click', () => {
+    document.querySelector(".prev").addEventListener("click", () => {
       slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
       slider.style.transform = `translateX(-${slideIndex * 100}%)`;
     });

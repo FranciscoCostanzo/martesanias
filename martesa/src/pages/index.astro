@@ -1,6 +1,35 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Slider from "../components/Slider.astro";
+import Destellos from "../../public/Destelleos.png";
+import sodalita from "../../public/soda.webp";
+import Amatista from "../../public/Amatista.webp";
+import CuarzoRosa from "../../public/CuarzoRosa.webp";
+
+// Define las imágenes para cada grupo de botones
+const imagenesPorGrupo = {
+  1: [
+    { nombrePulsera: "Sodalita", precio: "1000", img: sodalita.src },
+    { nombrePulsera: "Amatista", precio: "1000", img: Amatista.src },
+    { nombrePulsera: "Cuarzo Rosa", precio: "1000", img: CuarzoRosa.src },
+  ],
+  2: [
+    { nombrePulsera: "Pulsera Compartir 1", precio: "1500", img: sodalita.src },
+  ],
+  3: [
+    { nombrePulsera: "Pulsera Tematica 1", precio: "1200", img: sodalita.src },
+    // Añade más imágenes aquí
+  ],
+  4: [
+    { nombrePulsera: "Pulsera Basica 1", precio: "800", img: sodalita.src },
+    // Añade más imágenes aquí
+  ],
+  5: [
+    { nombrePulsera: "Pulsera Promo 1", precio: "500", img: sodalita.src },
+    // Añade más imágenes aquí
+  ],
+};
+
 const btns = [
   { id: 1, nombre: "Pulseras con Piedras" },
   { id: 2, nombre: "Pulseras para Compartir" },
@@ -15,10 +44,15 @@ const btns = [
     <h1>Lista de precios - julio 2024</h1>
 
     {btns.map((btn) => (
-        <p class="btn" id={`btn-${btn.id}`}>{btn.nombre}</p>
+      <>
+        <p class="btn" id={`btn-${btn.id}`}>
+          <img src={Destellos.src} alt="Destellos" />
+          {btn.nombre}
+        </p>
         <div class="slider-container" id={`slider-${btn.id}`} style="display: none;">
-          <Slider />
+          <Slider imagenes={imagenesPorGrupo[btn.id]} />
         </div>
+      </>
     ))}
   </main>
 </Layout>
@@ -48,17 +82,28 @@ const btns = [
     }
 
     .btn {
+      position: relative;
       text-align: center;
       width: 70%;
-      border-radius: 10px;
+      border-radius: 8px;
       background-color: mar(2);
       padding: 10px 5px;
       font-weight: bold;
-      cursor: pointer; // Añadido para indicar que es interactivo
+      cursor: pointer;
+
+      img {
+        position: absolute;
+        top: -40%;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        right: 50%;
+      }
     }
 
     .slider-container {
-      width: 70%;
+      background-color: mar(2);
+      width: 100%;
     }
   }
 </style>
@@ -66,11 +111,12 @@ const btns = [
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const buttons = document.querySelectorAll(".btn");
-    buttons.forEach(button => {
+    buttons.forEach((button) => {
       button.addEventListener("click", function () {
-        const id = this.id.split('-')[1];
+        const id = this.id.split("-")[1];
         const slider = document.getElementById(`slider-${id}`);
-        slider.style.display = slider.style.display === "none" ? "block" : "none";
+        slider.style.display =
+          slider.style.display === "none" ? "block" : "none";
       });
     });
   });
