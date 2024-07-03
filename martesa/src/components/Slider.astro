@@ -1,12 +1,11 @@
 ---
 const { imagenes } = Astro.props;
-import Flecha from "../../public/Flecha.svg";
 ---
 
 <div class="slider-wrapper">
   <div class="slider">
     {
-      imagenes.map((imagen, index) => (
+      imagenes.map((imagen) => (
         <div class="slide">
           <article class="textos__slider">
             <h6>{imagen.nombrePulsera}</h6>
