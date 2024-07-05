@@ -70,7 +70,6 @@ const btns = [
           <div
             class="slider-container"
             id={`slider-${btn.id}`}
-            style="display: none;"
           >
             <Slider imagenes={imagenesPorGrupo[btn.id]} />
           </div>
@@ -91,74 +90,85 @@ const btns = [
 </Layout>
 
 <style lang="scss">
-  $mar: (
-    1: #f8ebf3,
-    2: #f3d7e9,
-    3: #dc8aba,
-    4: #cd679f,
-    5: #9f3768,
-  );
+$mar: (
+  1: #f8ebf3,
+  2: #f3d7e9,
+  3: #dc8aba,
+  4: #cd679f,
+  5: #9f3768,
+);
 
-  @function mar($shade) {
-    @return map-get($mar, $shade);
+@function mar($shade) {
+  @return map-get($mar, $shade);
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+
+  h1 {
+    margin-top: 10px;
+    font-size: 24px;
   }
-  main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 20px;
 
-    h1 {
-      margin-top: 10px;
-      font-size: 24px;
-    }
-
-    .btn {
-      position: relative;
-      text-align: center;
-      width: 70%;
-      border-radius: 8px;
-      background-color: mar(2);
-      padding: 10px 5px;
-      font-weight: bold;
-      cursor: pointer;
-
-      img {
-        position: absolute;
-        top: -40%;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        right: 50%;
-      }
-    }
-
-    .slider-container {
-      background-color: mar(2);
-      width: 100%;
-    }
-  }
-  a {
-    margin-top: 20px;
-    text-decoration: none;
-    color: mar(5);
-    background-color: mar(1);
-    padding: 7px 5px;
-    border-radius: 8px;
-    font-weight: bold;
+  .btn {
     position: relative;
-    font-size: 13px;
     text-align: center;
+    width: 70%;
+    border-radius: 8px;
+    background-color: mar(2);
+    padding: 10px 5px;
+    font-weight: bold;
+    cursor: pointer;
 
-    .des {
+    img {
       position: absolute;
-      width: 30px;
-      height: 30px;
-      top: -30%;
-      left: -7%;
+      top: -40%;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      right: 50%;
     }
   }
+
+  .slider-container {
+    background-color: mar(2);
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    opacity: 0;
+  }
+  .active {
+      max-height: 1000px;
+      opacity: 1;
+    }
+}
+
+a {
+  margin-top: 20px;
+  text-decoration: none;
+  color: mar(5);
+  background-color: mar(1);
+  padding: 7px 5px;
+  border-radius: 8px;
+  font-weight: bold;
+  position: relative;
+  font-size: 14px;
+  text-align: center;
+
+  .des {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: -40%;
+    left: -7%;
+  }
+}
+
 </style>
 
 <script>
@@ -168,8 +178,7 @@ const btns = [
       button.addEventListener("click", function () {
         const id = this.id.split("-")[1];
         const slider = document.getElementById(`slider-${id}`);
-        slider.style.display =
-          slider.style.display === "none" ? "block" : "none";
+        slider.classList.toggle("active");
       });
     });
   });

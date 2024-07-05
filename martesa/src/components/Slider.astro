@@ -16,8 +16,8 @@ const { imagenes } = Astro.props;
       ))
     }
   </div>
-  <article class="prev"
-    ><svg
+  <button class="prev">
+    <svg
       xmlns="http://www.w3.org/2000/svg"
       class="icon icon-tabler icon-tabler-circle-arrow-left"
       width="44"
@@ -34,10 +34,10 @@ const { imagenes } = Astro.props;
       <path d="M8 12l4 4"></path>
       <path d="M8 12h8"></path>
       <path d="M12 8l-4 4"></path>
-    </svg></article
-  >
-  <article class="next"
-    ><svg
+    </svg>
+  </button>
+  <button class="next">
+    <svg
       xmlns="http://www.w3.org/2000/svg"
       class="icon icon-tabler icon-tabler-circle-arrow-right"
       width="44"
@@ -54,8 +54,8 @@ const { imagenes } = Astro.props;
       <path d="M16 12l-4 -4"></path>
       <path d="M16 12h-8"></path>
       <path d="M12 16l4 -4"></path>
-    </svg></article
-  >
+    </svg>
+  </button>
 </div>
 
 <style lang="scss">
@@ -103,15 +103,21 @@ const { imagenes } = Astro.props;
       position: absolute;
       width: 50%;
       text-align: center;
-      top: 85%;
+      top: 76%;
       background-color: mar(4);
       color: mar(1);
       border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
       h6 {
         font-size: 20px;
         margin: 0;
+        border-bottom: 1px solid mar(1);
+        width: fit-content;
       }
       span {
         font-size: 16px;
@@ -165,19 +171,23 @@ const { imagenes } = Astro.props;
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    let slideIndex = 0;
-    const slider = document.querySelector(".slider");
-    const slides = slider.querySelectorAll(".slide");
-    const totalSlides = slides.length;
+    const sliders = document.querySelectorAll(".slider-wrapper");
 
-    document.querySelector(".next").addEventListener("click", () => {
-      slideIndex = (slideIndex + 1) % totalSlides;
-      slider.style.transform = `translateX(-${slideIndex * 100}%)`;
-    });
+    sliders.forEach((sliderWrapper) => {
+      const slider = sliderWrapper.querySelector(".slider");
+      const slides = slider.querySelectorAll(".slide");
+      const totalSlides = slides.length;
+      let slideIndex = 0;
 
-    document.querySelector(".prev").addEventListener("click", () => {
-      slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
-      slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+      sliderWrapper.querySelector(".next").addEventListener("click", () => {
+        slideIndex = (slideIndex + 1) % totalSlides;
+        slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+      });
+
+      sliderWrapper.querySelector(".prev").addEventListener("click", () => {
+        slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
+        slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+      });
     });
   });
 </script>
