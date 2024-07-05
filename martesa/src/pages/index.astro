@@ -2,9 +2,17 @@
 import Layout from "../layouts/Layout.astro";
 import Slider from "../components/Slider.astro";
 import Destellos from "../../public/Destelleos.png";
-import sodalita from "../../public/soda.webp";
+import sodalita from "../../public/soda.jpg";
 import Amatista from "../../public/Amatista.webp";
-import CuarzoRosa from "../../public/CuarzoRosa.webp";
+import CuarzoRosa from "../../public/CuarzoRosa.jpg";
+import pul1 from "../../public/pul1.jpg";
+import pul2 from "../../public/pul2.jpg";
+import pul3 from "../../public/pul3.jpg";
+import pul4 from "../../public/pul4.jpg";
+import pul5 from "../../public/pul5.jpg";
+import pul6 from "../../public/pul6.jpg";
+import pul7 from "../../public/pul7.jpg";
+import pul8 from "../../public/pul8.jpg";
 
 // Define las imágenes para cada grupo de botones
 const imagenesPorGrupo = {
@@ -14,20 +22,29 @@ const imagenesPorGrupo = {
     { nombrePulsera: "Cuarzo Rosa", precio: "1000", img: CuarzoRosa.src },
   ],
   2: [
-    { nombrePulsera: "Pulsera Compartir 1", precio: "1500", img: sodalita.src },
+    {
+      nombrePulsera: "Una para vos, otra para mi",
+      precio: "1200",
+      img: pul7.src,
+    },
+    { nombrePulsera: "Siempre viboras", precio: "1500", img: pul1.src },
   ],
   3: [
-    { nombrePulsera: "Pulsera Tematica 1", precio: "1200", img: sodalita.src },
-    // Añade más imágenes aquí
+    { nombrePulsera: "LGBT+", precio: "700", img: pul2.src },
+    { nombrePulsera: "7 Chackras", precio: "1000", img: pul3.src },
+    { nombrePulsera: "Pulsera Protectora", precio: "500", img: pul4.src },
+    {
+      nombrePulsera: "Pulsera Protectora con Ojo Turco",
+      precio: "600",
+      img: pul5.src,
+    },
   ],
   4: [
-    { nombrePulsera: "Pulsera Basica 1", precio: "800", img: sodalita.src },
-    // Añade más imágenes aquí
+    { nombrePulsera: "Chevron", precio: "800", img: pul6.src },
+    { nombrePulsera: "Lisa", precio: "800", img: pul7.src },
+    { nombrePulsera: "Bi", precio: "600", img: pul8.src },
   ],
-  5: [
-    { nombrePulsera: "Pulsera Promo 1", precio: "500", img: sodalita.src },
-    // Añade más imágenes aquí
-  ],
+  5: [{ nombrePulsera: "Pulsera Promo 1", precio: "300", img: sodalita.src }],
 };
 
 const btns = [
@@ -131,13 +148,15 @@ const btns = [
     border-radius: 8px;
     font-weight: bold;
     position: relative;
+    font-size: 13px;
+    text-align: center;
 
-    .des{
-position: absolute;
-width: 30px;
-height: 30px;
-top: -30%;
-left: -7%;
+    .des {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      top: -30%;
+      left: -7%;
     }
   }
 </style>
