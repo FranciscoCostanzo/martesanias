@@ -65,6 +65,7 @@ const { imagenes } = Astro.props;
     3: #dc8aba,
     4: #cd679f,
     5: #9f3768,
+    sombra: #00000065,
   );
 
   @function mar($shade) {
@@ -80,7 +81,6 @@ const { imagenes } = Astro.props;
     height: 400px;
     overflow: hidden;
     border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: mar(1);
   }
 
@@ -111,7 +111,7 @@ const { imagenes } = Astro.props;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 14px 30px 0 mar(sombra);
 
       h6 {
         font-size: 20px;
@@ -126,14 +126,15 @@ const { imagenes } = Astro.props;
 
     img {
       width: 80%;
-      height: auto;
-      object-fit: contain;
+      height: 300px;
+      object-fit: cover;
       border-radius: 8px;
     }
   }
 
   .prev,
   .next {
+    background-color: #9f37688b;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,6 +153,7 @@ const { imagenes } = Astro.props;
     svg {
       width: 55px;
       height: 55px;
+      stroke: mar(1);
     }
   }
 
@@ -165,7 +167,7 @@ const { imagenes } = Astro.props;
 
   .prev:hover,
   .next:hover {
-    background-color: #9f376823;
+    background-color: mar(5);
   }
 </style>
 

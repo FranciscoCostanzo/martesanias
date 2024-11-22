@@ -3,62 +3,59 @@ import Layout from "../layouts/Layout.astro";
 import Slider from "../components/Slider.astro";
 import Destellos from "../../public/Destelleos.png";
 import sodalita from "../../public/soda.jpg";
-import Amatista from "../../public/Amatista.webp";
 import CuarzoRosa from "../../public/CuarzoRosa.jpg";
-import pul1 from "../../public/pul1.jpg";
-import pul2 from "../../public/pul2.jpg";
-import pul3 from "../../public/pul3.jpg";
-import pul4 from "../../public/pul4.jpg";
-import pul5 from "../../public/pul5.jpg";
-import pul6 from "../../public/pul6.jpg";
-import pul7 from "../../public/pul7.jpg";
-import pul8 from "../../public/pul8.jpg";
+import LGBT from "../../public/lgbt.jpg";
+import chackras from "../../public/chackras.jpg";
+import protectoraOjo from "../../public/protectoraOjo.jpg";
+import chevron from "../../public/chevron.jpg";
+import signos from "../../public/signos.jpg";
 
 // Define las imágenes para cada grupo de botones
 const imagenesPorGrupo = {
   1: [
-    { nombrePulsera: "Sodalita", precio: "1000", img: sodalita.src },
-    { nombrePulsera: "Amatista", precio: "1000", img: Amatista.src },
-    { nombrePulsera: "Cuarzo Rosa", precio: "1000", img: CuarzoRosa.src },
+    { nombrePulsera: "Sodalita", precio: "1500", img: sodalita.src },
+    // { nombrePulsera: "Amatista", precio: "1500", img: Amatista.src },
+    { nombrePulsera: "Cuarzo Rosa", precio: "1500", img: CuarzoRosa.src },
   ],
   2: [
-    {
-      nombrePulsera: "Una para vos, otra para mi",
-      precio: "1200",
-      img: pul7.src,
-    },
-    { nombrePulsera: "Siempre viboras", precio: "1500", img: pul1.src },
+    // {
+    //   nombrePulsera: "Una para vos, otra para mi",
+    //   precio: "1200",
+    //   img: pul7.src,
+    // },
+    // { nombrePulsera: "Siempre viboras", precio: "1500", img: pul1.src },
   ],
   3: [
-    { nombrePulsera: "LGBT+", precio: "700", img: pul2.src },
-    { nombrePulsera: "7 Chackras", precio: "1000", img: pul3.src },
-    { nombrePulsera: "Pulsera Protectora", precio: "500", img: pul4.src },
+    { nombrePulsera: "Signos", precio: "1000", img: signos.src },
+    { nombrePulsera: "LGBT+", precio: "800", img: LGBT.src },
+    { nombrePulsera: "7 Chackras", precio: "1500", img: chackras.src },
+    // { nombrePulsera: "Protectora", precio: "500", img: pul4.src },
     {
-      nombrePulsera: "Pulsera Protectora con Ojo Turco",
-      precio: "600",
-      img: pul5.src,
+      nombrePulsera: "Protectora con ojo turco",
+      precio: "800",
+      img: protectoraOjo.src,
     },
   ],
   4: [
-    { nombrePulsera: "Chevron", precio: "800", img: pul6.src },
-    { nombrePulsera: "Lisa", precio: "800", img: pul7.src },
-    { nombrePulsera: "Bi", precio: "600", img: pul8.src },
+    { nombrePulsera: "Chevron", precio: "1000", img: chevron.src },
+    // { nombrePulsera: "Lisa", precio: "800", img: pul7.src },
+    // { nombrePulsera: "Bi", precio: "600", img: pul8.src },
   ],
-  5: [{ nombrePulsera: "Pulsera Promo 1", precio: "300", img: sodalita.src }],
+  // 5: [{ nombrePulsera: "Pulsera Promo 1", precio: "300", img: sodalita.src }],
 };
 
 const btns = [
   { id: 1, nombre: "Pulseras con Piedras" },
-  { id: 2, nombre: "Pulseras para Compartir" },
+  // { id: 2, nombre: "Pulseras para Compartir" },
   { id: 3, nombre: "Pulseras Tematicas" },
   { id: 4, nombre: "Pulseras Basicas" },
-  { id: 5, nombre: "Pulseras en Promo" },
+  // { id: 5, nombre: "Pulseras en Promo" },
 ];
 ---
 
 <Layout title="Lista de Precios - Martesanias">
   <main>
-    <h1>Lista de precios - julio 2024</h1>
+    <h1 id="mes">Lista de precios - 2024</h1>
 
     {
       btns.map((btn) => (
@@ -67,10 +64,7 @@ const btns = [
             <img src={Destellos.src} alt="Destellos" />
             {btn.nombre}
           </p>
-          <div
-            class="slider-container"
-            id={`slider-${btn.id}`}
-          >
+          <div class="slider-container" id={`slider-${btn.id}`}>
             <Slider imagenes={imagenesPorGrupo[btn.id]} />
           </div>
         </>
@@ -90,88 +84,113 @@ const btns = [
 </Layout>
 
 <style lang="scss">
-$mar: (
-  1: #f8ebf3,
-  2: #f3d7e9,
-  3: #dc8aba,
-  4: #cd679f,
-  5: #9f3768,
-);
+  $mar: (
+    1: #f8ebf3,
+    2: #f3d7e9,
+    3: #dc8aba,
+    4: #cd679f,
+    5: #9f3768,
+    sombra: #cd679f7e,
+  );
 
-@function mar($shade) {
-  @return map-get($mar, $shade);
-}
-
-main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 20px;
-
-  h1 {
-    margin-top: 10px;
-    font-size: 24px;
+  @function mar($shade) {
+    @return map-get($mar, $shade);
   }
 
-  .btn {
-    position: relative;
-    text-align: center;
-    width: 70%;
-    border-radius: 8px;
-    background-color: mar(2);
-    padding: 10px 5px;
-    font-weight: bold;
-    cursor: pointer;
+  main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
 
-    img {
-      position: absolute;
-      top: -40%;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      right: 50%;
+    h1 {
+      margin-top: 10px;
+      font-size: 20px;
+      text-align: center;
     }
-  }
 
-  .slider-container {
-    background-color: mar(2);
-    width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
-    opacity: 0;
-  }
-  .active {
+    .btn {
+      position: relative;
+      text-align: center;
+      width: 70%;
+      border-radius: 8px;
+      background-color: mar(2);
+      padding: 10px 5px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 14px 30px 0 mar(sombra);
+
+      img {
+        position: absolute;
+        top: -40%;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        right: 50%;
+      }
+    }
+
+    .slider-container {
+      background-color: mar(2);
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+      transition:
+        max-height 0.4s ease-in-out,
+        opacity 0.4s ease-in-out;
+      opacity: 0;
+    }
+    .active {
       max-height: 1000px;
       opacity: 1;
     }
-}
-
-a {
-  margin-top: 20px;
-  text-decoration: none;
-  color: mar(5);
-  background-color: mar(1);
-  padding: 7px 5px;
-  border-radius: 8px;
-  font-weight: bold;
-  position: relative;
-  font-size: 14px;
-  text-align: center;
-
-  .des {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    top: -40%;
-    left: -7%;
   }
-}
 
+  a {
+    margin-top: 20px;
+    text-decoration: none;
+    color: mar(5);
+    background-color: mar(1);
+    padding: 7px 5px;
+    border-radius: 8px;
+    font-weight: bold;
+    position: relative;
+    font-size: 14px;
+    text-align: center;
+    box-shadow: 0 14px 30px 0 mar(sombra);
+
+    .des {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      top: -40%;
+      left: -7%;
+    }
+  }
 </style>
 
 <script>
+  const meses = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
+  ];
+
+  const mesActual = meses[new Date().getMonth()];
+  const txtMes = document.getElementById("mes");
+
+  txtMes.textContent = `Lista de precios - ${mesActual} 2024`;
+
   document.addEventListener("DOMContentLoaded", function () {
     const buttons = document.querySelectorAll(".btn");
     buttons.forEach((button) => {
