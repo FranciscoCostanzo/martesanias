@@ -7,15 +7,18 @@ import CuarzoRosa from "../../public/CuarzoRosa.jpg";
 import LGBT from "../../public/lgbt.jpg";
 import chackras from "../../public/chackras.jpg";
 import protectoraOjo from "../../public/protectoraOjo.jpg";
+import protectora from "../../public/protectora.jpg";
 import chevron from "../../public/chevron.jpg";
 import signos from "../../public/signos.jpg";
+import lisas from "../../public/lisas.jpg";
+import bi from "../../public/bi.jpg";
 
 // Define las imágenes para cada grupo de botones
 const imagenesPorGrupo = {
   1: [
-    { nombrePulsera: "Sodalita", precio: "1500", img: sodalita.src },
-    // { nombrePulsera: "Amatista", precio: "1500", img: Amatista.src },
-    { nombrePulsera: "Cuarzo Rosa", precio: "1500", img: CuarzoRosa.src },
+    { nombrePulsera: "Sodalita", precio: "2300", img: sodalita.src },
+    // { nombrePulsera: "Amatista", precio: "2300", img: Amatista.src },
+    { nombrePulsera: "Cuarzo Rosa", precio: "2300", img: CuarzoRosa.src },
   ],
   2: [
     // {
@@ -26,22 +29,21 @@ const imagenesPorGrupo = {
     // { nombrePulsera: "Siempre viboras", precio: "1500", img: pul1.src },
   ],
   3: [
-    { nombrePulsera: "Signos", precio: "1000", img: signos.src },
-    { nombrePulsera: "LGBT+", precio: "800", img: LGBT.src },
-    { nombrePulsera: "7 Chackras", precio: "1500", img: chackras.src },
-    // { nombrePulsera: "Protectora", precio: "500", img: pul4.src },
+    { nombrePulsera: "Signos", precio: "1200", img: signos.src },
+    { nombrePulsera: "LGBT+", precio: "1000", img: LGBT.src },
+    { nombrePulsera: "7 Chackras", precio: "2000", img: chackras.src },
+    { nombrePulsera: "Protectora", precio: "1000", img: protectora.src },
     {
       nombrePulsera: "Protectora con ojo turco",
-      precio: "800",
+      precio: "1500",
       img: protectoraOjo.src,
     },
   ],
   4: [
-    { nombrePulsera: "Chevron", precio: "1000", img: chevron.src },
-    // { nombrePulsera: "Lisa", precio: "800", img: pul7.src },
-    // { nombrePulsera: "Bi", precio: "600", img: pul8.src },
+    { nombrePulsera: "Chevron", precio: "1800", img: chevron.src },
+    { nombrePulsera: "Lisa", precio: "1200", img: lisas.src },
+    { nombrePulsera: "Bi", precio: "1000", img: bi.src },
   ],
-  // 5: [{ nombrePulsera: "Pulsera Promo 1", precio: "300", img: sodalita.src }],
 };
 
 const btns = [
@@ -56,6 +58,7 @@ const btns = [
 <Layout title="Lista de Precios - Martesanias">
   <main>
     <h1 id="mes">Lista de precios - 2024</h1>
+    <h2>Variedad de colores y diseños. Consulta nuestra selección.</h2>
 
     {
       btns.map((btn) => (
@@ -110,6 +113,12 @@ const btns = [
       text-align: center;
     }
 
+    h2 {
+      max-width: 300px;
+      font-size: 16px;
+      text-align: center;
+      color: mar(1);
+    }
     .btn {
       position: relative;
       text-align: center;
