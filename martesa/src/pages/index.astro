@@ -57,7 +57,7 @@ const btns = [
 
 <Layout title="Lista de Precios - Martesanias">
   <main>
-    <h1 id="mes">Lista de precios - 2024</h1>
+    <h1 id="mes"></h1>
     <h2>Variedad de colores y diseños. Consulta nuestra selección.</h2>
 
     {
@@ -196,9 +196,10 @@ const btns = [
   ];
 
   const mesActual = meses[new Date().getMonth()];
+  const añoActual = new Date().getFullYear()
   const txtMes = document.getElementById("mes");
 
-  txtMes.textContent = `Lista de precios - ${mesActual} 2024`;
+  txtMes.textContent = `Lista de precios - ${mesActual} ${añoActual}`;
 
   document.addEventListener("DOMContentLoaded", function () {
     const buttons = document.querySelectorAll(".btn");
