@@ -2,16 +2,22 @@
 import Layout from "../layouts/Layout.astro";
 import Slider from "../components/Slider.astro";
 import Destellos from "../../public/Destelleos.png";
-import sodalita from "../../public/soda.jpg";
-import CuarzoRosa from "../../public/CuarzoRosa.jpg";
-import LGBT from "../../public/lgbt.jpg";
-import chackras from "../../public/chackras.jpg";
-import protectoraOjo from "../../public/protectoraOjo.jpg";
-import protectora from "../../public/protectora.jpg";
-import chevron from "../../public/chevron.jpg";
-import signos from "../../public/signos.jpg";
-import lisas from "../../public/lisas.jpg";
-import bi from "../../public/bi.jpg";
+
+import sodalita from "../../public/soda.webp";
+import CuarzoRosa from "../../public/CuarzoRosa.webp";
+import LGBT from "../../public/lgbt.webp";
+import chackras from "../../public/chackras.webp";
+import protectoraOjo from "../../public/protectoraOjo.webp";
+import protectora from "../../public/protectora.webp";
+import chevron from "../../public/chevron.webp";
+import signos from "../../public/signos.webp";
+import lisas from "../../public/lisas.webp";
+import bi from "../../public/bi.webp";
+import enamorados1 from "../../public/enamorados1.webp";
+import enamorados2 from "../../public/enamorados2.webp";
+import enamorados3 from "../../public/enamorados3.webp";
+import cora from "../../public/cora.webp";
+import strap from "../../public/strap.webp";
 
 // Define las imágenes para cada grupo de botones
 const imagenesPorGrupo = {
@@ -43,6 +49,15 @@ const imagenesPorGrupo = {
     { nombrePulsera: "Chevron", precio: "1800", img: chevron.src },
     { nombrePulsera: "Lisa", precio: "1200", img: lisas.src },
     { nombrePulsera: "Bi", precio: "1200", img: bi.src },
+    { nombrePulsera: "Cora", precio: "1500", img: cora.src },
+  ],
+  5: [
+    { nombrePulsera: "¡Feliz San Valentin!", precio: "2500", img: enamorados1.src },
+    { nombrePulsera: "Pense en vos", precio: "2500", img: enamorados2.src },
+    { nombrePulsera: "¿Compartimos?", precio: "2500", img: enamorados3.src },
+  ],
+  6: [
+    { nombrePulsera: "Strap Phone", precio: "3000", img: strap.src },
   ],
 };
 
@@ -51,7 +66,8 @@ const btns = [
   // { id: 2, nombre: "Pulseras para Compartir" },
   { id: 3, nombre: "Pulseras Tematicas" },
   { id: 4, nombre: "Pulseras Basicas" },
-  // { id: 5, nombre: "Pulseras en Promo" },
+  { id: 5, nombre: "Enamorados" },
+  { id: 6, nombre: "Accesorios" },
 ];
 ---
 
