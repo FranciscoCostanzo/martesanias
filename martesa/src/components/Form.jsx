@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./FormStyle.scss"
 
 const Form = () => {
   const [categorias, setCategorias] = useState([]);
@@ -70,45 +71,48 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} encType="multipart/form-data">
-      {campos.map((campo, index) => (
-        <div key={index}>
+    <div className="formulario-wrapper">
+      <h2>Agregar Pulsera</h2>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
+        {campos.map((campo, index) => (
+          <div key={index}>
+            <label>
+              <span>{campo.span}</span>
+              <input
+                type={campo.type}
+                name={campo.name}
+                onChange={handleChange}
+                {...(campo.type !== "file"
+                  ? { value: formData[campo.name] }
+                  : {})}
+                required
+              />
+            </label>
+          </div>
+        ))}
+
+        <div>
           <label>
-            <span>{campo.span}</span>
-            <input
-              type={campo.type}
-              name={campo.name}
+            <span>Categoría</span>
+            <select
+              name="categoria_id"
+              value={formData.categoria_id}
               onChange={handleChange}
-              {...(campo.type !== "file"
-                ? { value: formData[campo.name] }
-                : {})}
               required
-            />
+            >
+              <option value="">Seleccionar categoría</option>
+              {categorias.map((cat) => (
+                <option key={cat.id} value={cat.id}>
+                  {cat.nombre}
+                </option>
+              ))}
+            </select>
           </label>
         </div>
-      ))}
 
-      <div>
-        <label>
-          <span>Categoría</span>
-          <select
-            name="categoria_id"
-            value={formData.categoria_id}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Seleccionar categoría</option>
-            {categorias.map((cat) => (
-              <option key={cat.id} value={cat.id}>
-                {cat.nombre}
-              </option>
-            ))}
-          </select>
-        </label>
-      </div>
-
-      <button type="submit">Subir</button>
-    </form>
+        <button type="submit">Subir</button>
+      </form>
+    </div>
   );
 };
 
